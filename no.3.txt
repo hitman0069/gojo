@@ -1,0 +1,89 @@
+CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    StudentName VARCHAR(50) NOT NULL,
+    CourseID INT
+);
+
+CREATE TABLE Courses (
+    CourseID INT PRIMARY KEY,
+    CourseName VARCHAR(50) NOT NULL,
+    Credits INT
+);
+
+INSERT INTO Students (StudentID, StudentName, CourseID) VALUES
+(1, 'Alice', 101);
+INSERT INTO Students (StudentID, StudentName, CourseID) VALUES
+(2, 'Bob', 102);
+INSERT INTO Students (StudentID, StudentName, CourseID) VALUES
+(3, 'Charlie', 101);
+INSERT INTO Students (StudentID, StudentName, CourseID) VALUES
+(4, 'David', NULL);
+INSERT INTO Students (StudentID, StudentName, CourseID) VALUES
+(5, 'Eva', 103);
+SELECT * FROM Students;
+
+INSERT INTO Courses (CourseID, CourseName, Credits) VALUES
+(101, 'Mathematics', 3);
+INSERT INTO Courses (CourseID, CourseName, Credits) VALUES
+(102, 'Physics', 4);
+INSERT INTO Courses (CourseID, CourseName, Credits) VALUES
+(103, 'Chemistry', 3);
+INSERT INTO Courses (CourseID, CourseName, Credits) VALUES
+(104, 'Biology', 2);
+SELECT * FROM Courses;
+
+SELECT 
+    Students.StudentID,
+    Students.StudentName,
+    Courses.CourseName
+FROM 
+    Students
+INNER JOIN 
+    Courses ON Students.CourseID = Courses.CourseID;
+
+
+SELECT 
+    Students.StudentID,
+    Students.StudentName,
+    Courses.CourseName
+FROM 
+    Students
+LEFT OUTER JOIN 
+    Courses ON Students.CourseID = Courses.CourseID;
+
+SELECT 
+    Students.StudentID,
+    Students.StudentName,
+    Courses.CourseName
+FROM 
+    Students
+RIGHT OUTER JOIN 
+    Courses ON Students.CourseID = Courses.CourseID;
+
+SELECT 
+    Students.StudentID,
+    Students.StudentName,
+    Courses.CourseName
+FROM 
+    Students
+FULL OUTER JOIN 
+    Courses ON Students.CourseID = Courses.CourseID;
+
+
+SELECT 
+    Students.StudentName,
+    Courses.CourseName
+FROM 
+    Students
+CROSS JOIN 
+    Courses;
+
+
+SELECT 
+    StudentID,
+    StudentName,
+    CourseName
+FROM 
+    Students
+NATURAL JOIN 
+    Courses;
